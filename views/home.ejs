@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>
+            
+            <%= title %>
+
+        </title>
+         
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+   <script src=" https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  </head>
+    <body>
+      <main>
+
+        <section class ="container">
+<h1>TODO APP</h1>
+<div class ="panel">          <div class ="form">
+        
+        <form action="/create-task" method="POST">
+         <input type="text" name="description"placeholder="What do you need to do?" required></input>
+          <select name="category" required >
+              <option>PERSONAL</option>
+              <option>WORK</option>
+              <option>SCHOOL</option>
+              <option>HOBBY</option>
+              <option>OTHER</option>
+            </select>
+          <input type="date" name="date" required>
+          <input type="submit"id="add" value="ADD TASK">
+             
+  </form>
+  </div>
+        <div class = "tasks-list">          
+                <h2>TASKS LIST</h2>
+
+                 
+                <form action="/delete-task" method="GET"  id  = "task-list-index" >
+                 
+                        <% for(let i of task) { %>
+                            
+
+                                <div id ="task-container">
+                                 <div id = "task-box">
+                                  <input id = "checkbox" type="checkbox" name="<%= i._id %>" >
+                                 <p id="task-description"><%= i.description %> 
+                                 <p id="task-category"><%= i.category %></p></div>
+                                 <p id="due-date"><%= i.date %></p>
+</div>
+                    
+
+                        <% } %>
+                            
+                
+ <div  align = "center"><input type="submit" class="btn btn-danger" value="DELETE TASK">
+                </div>
+              </form>
+              </div>
+   </div>
+
+            </section>
+
+</main>
+              <footer id = "footer">
+                <div>TO DO list made with love <span style ="color:red">❤</span> by shubham</div>
+              </footer>
+       <script src = "/js/index.js"></script> // This script changes the background color category wise tasks
+
+            </body>
+</html>
